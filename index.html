@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anumula Samarth — Portfolio</title>
+<meta name="description" content="Anumula Samarth — Computer Science engineering student building AI, machine learning, data, and full-stack systems. Portfolio built from published GitHub work.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22black%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --bg: #000000;
+    --bg-raised: #050504;
+    --text: #F1F0EA;
+    --text-dim: #9C9A90;
+    --text-faint: #625F55;
+    --line: #24231F;
+    --line-strong: #45423B;
+    --blue: #7C9CDB;
+    --blue-dim: #4E6591;
+    --green: #74C69D;
+    --green-dim: #45785C;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="light"]):not([data-theme="dark"]) {
+      --bg: #000000;
+      --bg-raised: #050504;
+      --text: #F1F0EA;
+      --text-dim: #9C9A90;
+      --text-faint: #625F55;
+      --line: #24231F;
+      --line-strong: #45423B;
+      --blue: #7C9CDB;
+      --blue-dim: #4E6591;
+      --green: #74C69D;
+      --green-dim: #45785C;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', serif;
+    font-optical-sizing: auto;
+    font-variant-numeric: tabular-nums lining-nums;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+
+  a { color: var(--blue); }
+  a:focus-visible, button:focus-visible { outline: 1.5px solid var(--blue); outline-offset: 3px; }
+  code {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    color: var(--text);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    padding: 0.1em 0.4em;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .wrap-wide {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- nav ---------- */
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    gap: 20px;
+  }
+  .nav-name {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  nav.nav-links {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  nav.nav-links a {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.nav-links a:hover { color: var(--blue); border-color: var(--blue-dim); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 88px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  h1.hero-headline {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    line-height: 1.24;
+    font-weight: 600;
+    margin: 0 0 28px;
+    max-width: 26ch;
+    letter-spacing: -0.005em;
+  }
+  .hero-sub {
+    max-width: 62ch;
+    color: var(--text-dim);
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 14px;
+  }
+  .hero-sub + .hero-sub { margin-top: -4px; }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta-item { font-family: 'Roboto Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-dim); }
+  .hero-meta-item strong { color: var(--text); font-weight: 500; }
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-top: 22px;
+  }
+  .hero-links a {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 14px;
+    text-decoration: underline;
+    text-decoration-color: var(--blue-dim);
+    text-underline-offset: 3px;
+    color: var(--blue);
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
+  }
+  .hero-links a:hover { text-decoration-color: var(--blue); color: var(--text); }
+
+  /* ---------- section shell ---------- */
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  h2.section-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 0 12px;
+    letter-spacing: -0.005em;
+  }
+  p.section-lede {
+    color: var(--text-dim);
+    max-width: 68ch;
+    font-size: 16.5px;
+    margin: 0 0 44px;
+  }
+
+  /* ---------- philosophy / pipeline ---------- */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    margin: 8px 0 38px;
+    border: 1px solid var(--line);
+  }
+  .pipeline-step {
+    padding: 20px 18px;
+    border-right: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .pipeline-step:nth-child(-n+6) { border-top: none; }
+  .pipeline-step:nth-child(6n) { border-right: none; }
+  @media (max-width: 900px) {
+    .pipeline { grid-template-columns: repeat(3, 1fr); }
+    .pipeline-step:nth-child(-n+6) { border-top: 1px solid var(--line); }
+    .pipeline-step:nth-child(-n+3) { border-top: none; }
+    .pipeline-step:nth-child(6n) { border-right: 1px solid var(--line); }
+    .pipeline-step:nth-child(3n) { border-right: none; }
+  }
+  .pipeline-step .num {
+    display: block;
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+  }
+  .pipeline-step .label {
+    font-size: 15.5px;
+    font-weight: 500;
+  }
+  .philosophy-text {
+    max-width: 66ch;
+    color: var(--text-dim);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .philosophy-text em { color: var(--green); font-style: italic; }
+
+  /* ---------- projects ---------- */
+  .project {
+    padding: 46px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:first-of-type { border-top: none; padding-top: 8px; }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 6px;
+  }
+  h3.project-title {
+    font-size: 1.42rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.003em;
+  }
+  .project-fork-note {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--blue);
+    border: 1px solid var(--blue-dim);
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .project-tagline {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin: 0 0 20px;
+    font-style: italic;
+  }
+  .project-desc {
+    max-width: 74ch;
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0 0 24px;
+  }
+  .project-desc + .project-desc { margin-top: -12px; }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0 0 24px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat {
+    flex: 1 1 140px;
+    padding: 16px 20px 16px 0;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .stat-num {
+    display: block;
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .stat .stat-label {
+    display: block;
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 7px;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .tag {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    padding: 4px 10px;
+    line-height: 1.3;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-bottom: 16px;
+  }
+  .project-links a {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 13.5px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .project-links a.link-code {
+    color: var(--blue);
+    text-decoration-color: var(--blue-dim);
+  }
+  .project-links a.link-code:hover { text-decoration-color: var(--blue); color: var(--text); }
+  .project-links a.link-live {
+    color: var(--green);
+    text-decoration-color: var(--green-dim);
+  }
+  .project-links a.link-live:hover { text-decoration-color: var(--green); color: var(--text); }
+  .project-links a.link-live::before {
+    content: "\25CF";
+    font-size: 8px;
+    margin-right: 7px;
+    position: relative;
+    top: -2px;
+  }
+
+  .project-note {
+    font-size: 14px;
+    color: var(--text-faint);
+    max-width: 70ch;
+    line-height: 1.6;
+    border-left: 2px solid var(--line-strong);
+    padding-left: 14px;
+    margin-top: 18px;
+  }
+
+  /* ---------- skills table ---------- */
+  table.skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+  }
+  table.skills-table tr { border-top: 1px solid var(--line); }
+  table.skills-table tr:last-child { border-bottom: 1px solid var(--line); }
+  table.skills-table th, table.skills-table td {
+    text-align: left;
+    padding: 15px 18px 15px 0;
+    vertical-align: top;
+    font-weight: 400;
+  }
+  table.skills-table th {
+    width: 190px;
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  table.skills-table td { color: var(--text-dim); }
+
+  /* ---------- additional work / leadership lists ---------- */
+  ul.plain-list { list-style: none; margin: 0; padding: 0; }
+  ul.plain-list li {
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+  ul.plain-list li:last-child { border-bottom: 1px solid var(--line); }
+  .list-main { flex: 1 1 420px; }
+  .list-main .list-title { font-size: 16.5px; font-weight: 500; margin-right: 10px; }
+  .list-main .list-desc { color: var(--text-dim); font-size: 15.5px; }
+  .list-link {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 13px;
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-color: var(--blue-dim);
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .list-link:hover { text-decoration-color: var(--blue); color: var(--text); }
+
+  .leadership-item { padding: 22px 0; border-top: 1px solid var(--line); }
+  .leadership-item:last-child { border-bottom: 1px solid var(--line); }
+  .leadership-item .list-title { font-size: 16.5px; font-weight: 500; }
+  .leadership-item p { color: var(--text-dim); font-size: 15.5px; margin: 6px 0 0; max-width: 70ch; }
+
+  .focus-block {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    max-width: 66ch;
+    color: var(--text-dim);
+    font-size: 16.5px;
+    line-height: 1.7;
+  }
+  .focus-block strong { color: var(--text); font-weight: 500; }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 56px 0 64px;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .footer-links a {
+    font-family: 'Roboto Mono', ui-monospace, monospace;
+    font-size: 13.5px;
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-color: var(--blue-dim);
+    text-underline-offset: 3px;
+  }
+  .footer-links a:hover { text-decoration-color: var(--blue); color: var(--text); }
+  .footer-loc { font-family: 'Roboto Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-dim); }
+  .footer-note {
+    margin-top: 22px;
+    font-size: 13.5px;
+    color: var(--text-faint);
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+  .footer-note a { color: var(--text-faint); text-decoration: underline; text-decoration-color: var(--line); }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .hero { padding: 56px 0 44px; }
+    section { padding: 52px 0; }
+    .pipeline { flex-direction: column; }
+    .pipeline-step { flex: 1 1 auto; border-right: none; border-bottom: 1px solid var(--line); padding: 14px 18px; }
+    .pipeline-step:last-child { border-bottom: none; }
+    .stat { flex: 1 1 45%; }
+    table.skills-table th { width: auto; display: block; padding-bottom: 4px; }
+    table.skills-table td { display: block; padding-top: 0; padding-bottom: 15px; }
+    table.skills-table tr { display: block; padding: 15px 0; }
+    table.skills-table tr:first-child { border-top: 1px solid var(--line); }
+    .nav-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    nav.nav-links { justify-content: flex-start; gap: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap-wide nav-inner">
+    <a class="nav-name" href="#top">Anumula Samarth</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#additional">Additional</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap-wide" style="border-bottom:1px solid var(--line);">
+    <h1 class="hero-headline">Computer Science engineering student building AI, machine learning, data, and full-stack systems.</h1>
+    <p class="hero-sub">I turn model experiments into end-to-end software — data pipelines, APIs, backends, interfaces, databases, validation, deployment, and automation. Current work centers on AI engineering, machine learning, generative AI, full-stack engineering, and data engineering.</p>
+    <p class="hero-sub">Pursuing a Bachelor of Engineering in Computer Science Engineering at KMTES, with a focus on applied AI and software engineering.</p>
+    <div class="hero-links">
+      <a href="https://github.com/samxkevin" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://leetcode.com/samxkevin" target="_blank" rel="noopener">LeetCode</a>
+      <a href="mailto:anumulasamarth008@gmail.com">Email</a>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><strong>Location</strong> — Hyderabad, India</span>
+      <span class="hero-meta-item"><strong>Repositories</strong> — 13 public on GitHub</span>
+    </div>
+  </section>
+
+  <section class="wrap-wide" id="philosophy">
+    <h2 class="section-title">How I build</h2>
+    <p class="section-lede">A pattern that runs through the retrieval systems, multimodal pipelines, data workflows, and verification tools below.</p>
+    <div class="pipeline">
+      <div class="pipeline-step"><span class="num">1</span><span class="label">Input</span></div>
+      <div class="pipeline-step"><span class="num">2</span><span class="label">Processing</span></div>
+      <div class="pipeline-step"><span class="num">3</span><span class="label">Model / Reasoning</span></div>
+      <div class="pipeline-step"><span class="num">4</span><span class="label">Validation</span></div>
+      <div class="pipeline-step"><span class="num">5</span><span class="label">Decision</span></div>
+      <div class="pipeline-step"><span class="num">6</span><span class="label">Output</span></div>
+    </div>
+    <p class="philosophy-text">I design beyond the model boundary. Each stage should have a clear contract, outputs should be traceable to inputs, and uncertain model behavior should be surrounded by <em>deterministic checks</em> where possible.</p>
+  </section>
+
+  <section class="wrap-wide" id="work">
+    <h2 class="section-title">Featured work</h2>
+    <p class="section-lede">Four repositories, described from their own documentation — architecture, verified metrics, and stated limitations included.</p>
+
+    <!-- SceneSolver -->
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">SceneSolver</h3>
+      </div>
+      <p class="project-tagline">Multimodal forensic analysis system for surveillance video</p>
+      <p class="project-desc">SceneSolver ingests a surveillance clip and runs it through a staged pipeline: an autoencoder anomaly signal, a fine-tuned TimeSformer binary classifier, a multi-class incident classifier, conditional YOLOv8 weapon detection, audio-feature analysis, and a fusion/reasoning layer, with experimental reinforcement-learning and LLaVA narrative stages on top. A "normal" verdict at the binary stage suppresses the downstream classification and weapon stages, rather than letting a weak signal escalate on its own.</p>
+      <p class="project-desc">The system renders a structured PDF/HTML forensic report and can dispatch alerts to Telegram, Discord, and email. A Gradio application (Home / Analyse / Contact) backs the public demo; layered on top is "Sherl0ck," a voice-driven escalation agent that uses a Liquid Foundation Model for speech and Cohere for reasoning once a run crosses a critical threshold.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">0.956</span><span class="stat-label">recorded binary-classifier accuracy</span></div>
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">staged pipeline components</span></div>
+        <div class="stat"><span class="stat-num">30</span><span class="stat-label">passing DatasetTools tests</span></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">GitHub forks</span></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag">PyTorch</span><span class="tag">TimeSformer</span><span class="tag">YOLOv8</span>
+        <span class="tag">LLaVA</span><span class="tag">Autoencoder</span><span class="tag">Gradio</span><span class="tag">MIT License</span>
+      </div>
+      <div class="project-links">
+        <a class="link-code" href="https://github.com/samxkevin/SceneSolver" target="_blank" rel="noopener">GitHub repository</a>
+        <a class="link-live" href="https://huggingface.co/spaces/samxkevin/SceneSolver" target="_blank" rel="noopener">Live demo — Hugging Face Space</a>
+      </div>
+      <p class="project-note">Stated in the repository: a research and academic project — several stages are explicitly marked experimental, and its output is not a substitute for professional forensic examination.</p>
+    </article>
+
+    <!-- RAGnosis -->
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">RAGnosis</h3>
+        <span class="project-fork-note">Fork, extended into a deployed service</span>
+      </div>
+      <p class="project-tagline">Biomedical retrieval-augmented chatbot</p>
+      <p class="project-desc">RAGnosis is a text-only biomedical retrieval-augmented chatbot. A Flask service retrieves related entities from a remote Neo4j Aura knowledge graph using keyword (Cypher <code>CONTAINS</code>) matching, then Cohere Chat generates a reply from that context. The production path — <code>GET /</code>, <code>GET /health</code>, <code>POST /chat</code> — runs as a Render web service under gunicorn.</p>
+      <p class="project-desc">The service is deliberately conservative: a failed retrieval returns a real configuration or connection error rather than an invented answer, and <code>/health</code> reports Neo4j and Cohere configuration status even when one is unavailable.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">graph nodes retrieved per query</span></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">model fallback chain — primary + backup</span></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Neo4j AuraDB</span>
+        <span class="tag">Cohere</span><span class="tag">Render</span><span class="tag">MIT License</span>
+      </div>
+      <div class="project-links">
+        <a class="link-code" href="https://github.com/samxkevin/RAGnosis" target="_blank" rel="noopener">GitHub repository</a>
+        <a class="link-live" href="https://ragnosis-nwst.onrender.com/" target="_blank" rel="noopener">Live app</a>
+      </div>
+      <p class="project-note">Stated in the repository: informational only — not a substitute for professional medical diagnosis or treatment. Forked from sathvik2903/RAGnosis and built out into the deployed Flask service described above.</p>
+    </article>
+
+    <!-- GraphOneSlice -->
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">GraphOneSlice</h3>
+      </div>
+      <p class="project-tagline">Evidence-driven AI-ecosystem data pipeline</p>
+      <p class="project-desc">GraphOneSlice runs two ingestion workstreams. The original workstream is a deterministic research-paper pipeline: arXiv discovery, parsing, evidence-backed GitHub repository association, verification, validation, and PostgreSQL / Google Sheets export. The newer "AI Orbit" workstream ingests structured records — repositories, packages, models, companies, devices, and news — from verified sources such as the GitHub, PyPI, and npm APIs, official SDK type files, and several public catalogs, through Discovery → Extraction → Cleaning → Normalization → Entity Resolution → Classification → Relationship Mapping → Validation.</p>
+      <p class="project-desc">Source records are treated as authoritative and LLM output is not used as factual evidence; a missing fact is left <code>null</code> rather than inferred, and every entity and relationship carries a provenance record back to its source.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">254</span><span class="stat-label">valid entities, latest run</span></div>
+        <div class="stat"><span class="stat-num">134</span><span class="stat-label">relationships mapped</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">provenance coverage</span></div>
+        <div class="stat"><span class="stat-num">164</span><span class="stat-label">automated tests passing</span></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Entity Resolution</span>
+        <span class="tag">Deterministic Validation</span><span class="tag">MIT License</span>
+      </div>
+      <div class="project-links">
+        <a class="link-code" href="https://github.com/samxkevin/GraphOneSlice" target="_blank" rel="noopener">GitHub repository</a>
+        <a class="link-live" href="https://graphoneslice-reviewer.vercel.app/" target="_blank" rel="noopener">Live reviewer</a>
+      </div>
+      <p class="project-note">Stated in the repository: the 254-entity result sits inside the assessment's 250–300 target; remaining work is metadata and relationship quality, not row-count expansion, and several candidate sources are recorded as unreachable rather than silently skipped.</p>
+    </article>
+
+    <!-- FaceID -->
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">FaceID + Blockchain Verification</h3>
+      </div>
+      <p class="project-tagline">Tamper-evident identity-claim verification</p>
+      <p class="project-desc">A local pipeline that detects and encodes a face (dlib / <code>face_recognition</code>, a 128-dimensional encoding that is never uploaded or written on-chain), runs a live reverse-image search through Google Lens (via SerpAPI) or TinEye, and independently corroborates any social-media match with perceptual hashing computed locally rather than trusting the provider's label alone. The resulting evidence record is canonicalized and hashed with SHA-256, then anchored on the Ethereum Sepolia testnet through an immutable, append-only smart contract, so anyone can verify the record's integrity afterward with no API key and no private key.</p>
+      <p class="project-desc">The project states its scope precisely: it proves a record existed, unaltered, before a given block — it does not prove anyone's identity or social-account ownership.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">204</span><span class="stat-label">automated tests — 190 offline, 14 on-chain</span></div>
+        <div class="stat"><span class="stat-num">128</span><span class="stat-label">face-encoding dimensions</span></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">keys required for independent verification</span></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">dlib</span><span class="tag">Web3.py</span>
+        <span class="tag">Solidity</span><span class="tag">Ethereum Sepolia</span><span class="tag">MIT License</span>
+      </div>
+      <div class="project-links">
+        <a class="link-code" href="https://github.com/samxkevin/FaceID-Blockchain-Verification" target="_blank" rel="noopener">GitHub repository</a>
+      </div>
+      <p class="project-note">Stated in the repository: no website, no hosting — one command in, a blockchain transaction out. Built for an assessment task ("HHgoa Task #3") and deliberately conservative about what it claims: a face encoding is not an identity, and a reverse-image match is not proof of account ownership.</p>
+    </article>
+
+  </section>
+
+  <section class="wrap-wide" id="skills">
+    <h2 class="section-title">Technical skills</h2>
+    <p class="section-lede">As listed on the GitHub profile.</p>
+    <table class="skills-table">
+      <tbody>
+        <tr><th>Languages</th><td>Python, C++, Java, JavaScript</td></tr>
+        <tr><th>AI / ML</th><td>PyTorch, TensorFlow, Hugging Face Transformers, Scikit-learn, LoRA, transfer learning, reinforcement learning</td></tr>
+        <tr><th>Generative AI</th><td>LLMs, RAG, embeddings, knowledge graphs, LLaVA, Cohere, prompt engineering, agentic workflows, ASR / TTS</td></tr>
+        <tr><th>Computer vision</th><td>OpenCV, YOLOv8, TimeSformer, Vision Transformers, CLIP, video understanding, anomaly detection</td></tr>
+        <tr><th>Backend / full stack</th><td>React, Node.js, Express, FastAPI, Flask, REST APIs, MERN</td></tr>
+        <tr><th>Data / databases</th><td>SQL, PostgreSQL, MongoDB, Neo4j, ingestion, normalization, entity resolution, validation</td></tr>
+        <tr><th>Engineering / platforms</th><td>Git, Linux, Docker, Google Colab, Hugging Face Spaces, cloud deployment</td></tr>
+        <tr><th>Blockchain</th><td>Solidity, Web3.py, Ethereum, smart contracts, on-chain verification</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wrap-wide" id="additional">
+    <h2 class="section-title">Additional work</h2>
+    <p class="section-lede">Smaller repositories from the same GitHub account.</p>
+    <ul class="plain-list">
+      <li>
+        <div class="list-main"><span class="list-title">ProjectBMS</span><span class="list-desc">— autonomous borewell management using ESP32/ESP8266 devices, IoT sensors, wireless communication, and embedded automation.</span></div>
+        <a class="list-link" href="https://github.com/samxkevin/ProjectBMS" target="_blank" rel="noopener">GitHub</a>
+      </li>
+      <li>
+        <div class="list-main"><span class="list-title">TensorTonic-Solutions</span><span class="list-desc">— machine learning problem solutions and practice.</span></div>
+        <a class="list-link" href="https://github.com/samxkevin/TensorTonic-Solutions" target="_blank" rel="noopener">GitHub</a>
+      </li>
+      <li>
+        <div class="list-main"><span class="list-title">KMCE-DL</span><span class="list-desc">— materials and implementations from deep learning sessions.</span></div>
+        <a class="list-link" href="https://github.com/samxkevin/KMCE-DL" target="_blank" rel="noopener">GitHub</a>
+      </li>
+      <li>
+        <div class="list-main"><span class="list-title">KMCE-EL</span><span class="list-desc">— embedded learning session materials.</span></div>
+        <a class="list-link" href="https://github.com/samxkevin/KMCE-EL" target="_blank" rel="noopener">GitHub</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="wrap-wide" id="leadership">
+    <h2 class="section-title">Leadership &amp; hackathons</h2>
+    <p class="section-lede">As listed on the GitHub profile.</p>
+
+    <div class="leadership-item">
+      <span class="list-title">Lead, TechTattva</span>
+      <p>Organized AI/ML sessions with industry practitioners and technical workshops.</p>
+    </div>
+    <div class="leadership-item">
+      <span class="list-title">Founder, CPatKMCE</span>
+      <p>Built a competitive-programming community focused on algorithms and problem solving.</p>
+    </div>
+    <div class="leadership-item">
+      <span class="list-title">Hackathons</span>
+      <p>Semi-finalist at the ET Gen AI Hackathon; Agentathon 2025 participant; organizer and participant in college technical events.</p>
+    </div>
+
+    <div class="focus-block">
+      <strong>Current focus.</strong> Building stronger retrieval, multimodal, and agentic AI systems while deepening data engineering, deployment, and core software engineering fundamentals.
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap-wide">
+    <div class="footer-row">
+      <div class="footer-links">
+        <a href="mailto:anumulasamarth008@gmail.com">anumulasamarth008@gmail.com</a>
+        <a href="https://github.com/samxkevin" target="_blank" rel="noopener">github.com/samxkevin</a>
+        <a href="https://leetcode.com/samxkevin" target="_blank" rel="noopener">leetcode.com/samxkevin</a>
+      </div>
+      <span class="footer-loc">Hyderabad, India</span>
+    </div>
+    <p class="footer-note">Every project description, statistic, and link on this page is drawn directly from documentation published at <a href="https://github.com/samxkevin" target="_blank" rel="noopener">github.com/samxkevin</a>. Nothing here is inferred or invented.</p>
+  </div>
+</footer>
+
+</body>
+</html>
