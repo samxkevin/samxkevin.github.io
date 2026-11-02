@@ -473,9 +473,151 @@
     .nav-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     nav.nav-links { justify-content: flex-start; gap: 16px 20px; }
   }
+
+  /* Visual refinements retain the original fonts and color variables. */
+  html { scroll-padding-top: 112px; }
+  #ambient-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.74;
+  }
+  main, footer { position: relative; z-index: 1; }
+  header.site-nav { box-shadow: 0 1px 0 var(--line); }
+  ::selection { background: var(--blue-dim); color: var(--text); }
+  .hero { position: relative; overflow: hidden; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    right: -125px;
+    top: 36px;
+    pointer-events: none;
+    box-shadow: 0 0 0 42px rgba(69,66,59,0.085), 0 0 0 88px rgba(69,66,59,0.045);
+  }
+  .hero-eyebrow, .cert-kicker {
+    color: var(--green);
+    font: 500 11.5px 'Roboto Mono', ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .hero-eyebrow { margin: 0 0 23px; }
+  .hero-keyword {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--blue-dim);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+  }
+  .text-focus { font-weight: 600; color: var(--text); }
+  .hero-links a { display: inline-flex; align-items: center; padding: 5px 0; }
+  .hero-links a:hover { transform: translateY(-1px); }
+  section { scroll-margin-top: 95px; }
+  .section-title { position: relative; padding-bottom: 14px; }
+  .section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 58px;
+    background: var(--blue-dim);
+  }
+  .section-lede { margin-top: 9px; }
+  #work .project {
+    position: relative;
+    margin: 0 0 21px;
+    padding: 36px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(5,5,4,0.87);
+    transition: transform .22s ease, border-color .22s ease, background-color .22s ease;
+  }
+  #work .project:first-of-type { padding-top: 36px; border-top: 1px solid var(--line); }
+  #work .project:last-child { margin-bottom: 0; }
+  #work .project::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    bottom: 36px;
+    left: 0;
+    width: 2px;
+    background: var(--blue-dim);
+    opacity: .42;
+  }
+  .project-tagline {
+    border-left: 2px solid var(--line-strong);
+    padding-left: 12px;
+    font-style: normal;
+  }
+  .tag { border-radius: 4px; background: rgba(36,35,31,.33); }
+  .stat-row { background: rgba(36,35,31,.12); }
+  .leadership-item, .plain-list li { transition: padding-left .2s ease, border-color .2s ease; }
+  .cert-display { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .cert-feature {
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 26px 30px;
+    background: rgba(5,5,4,.91);
+  }
+  .cert-feature h3 { margin: 12px 0 6px; font-size: 1.4rem; font-weight: 600; }
+  .cert-feature p { margin: 0 0 20px; color: var(--text-dim); }
+  .cert-feature a, .cert-viewer-bar a {
+    color: var(--blue);
+    font: 500 13px 'Roboto Mono', ui-monospace, monospace;
+    text-underline-offset: 3px;
+  }
+  .cert-viewer { overflow: hidden; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--bg-raised); }
+  .cert-viewer-bar {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font: 500 12px 'Roboto Mono', ui-monospace, monospace;
+  }
+  .cert-viewer iframe { display: block; width: 100%; height: 430px; border: none; background: #fff; }
+  .cert-help { margin: 14px 0 0; font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+  .motion-toggle {
+    margin-top: 22px;
+    border: 1px solid var(--line-strong);
+    color: var(--text-dim);
+    background: var(--bg-raised);
+    border-radius: 5px;
+    padding: 9px 13px;
+    font: 400 12px 'Roboto Mono', ui-monospace, monospace;
+    cursor: pointer;
+  }
+  .motion-toggle:hover { color: var(--text); border-color: var(--blue-dim); }
+  @media (hover: hover) and (pointer: fine) {
+    #work .project:hover { transform: translateY(-3px); border-color: var(--line-strong); background: rgba(5,5,4,.96); }
+    .leadership-item:hover, .plain-list li:hover { padding-left: 8px; border-color: var(--line-strong); }
+  }
+  @media (max-width: 640px) {
+    .hero::after { width: 140px; height: 140px; right: -95px; top: 25px; }
+    #work .project, #work .project:first-of-type { padding: 24px 20px; }
+    #work .project::before { top: 24px; bottom: 24px; }
+    .cert-feature { padding: 20px; }
+    .cert-viewer iframe { height: 360px; }
+    .hero-keyword { text-underline-offset: 4px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #work .project, .hero-links a, .leadership-item, .plain-list li { transition: none; }
+  }
+
 </style>
 </head>
 <body>
+<canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
 <header class="site-nav">
   <div class="wrap-wide nav-inner">
@@ -494,8 +636,9 @@
 <main id="top">
 
   <section class="hero wrap-wide" style="border-bottom:1px solid var(--line);">
-    <h1 class="hero-headline">Computer Science engineering student building AI, machine learning, data, and full-stack systems.</h1>
-    <p class="hero-sub">I turn model experiments into end-to-end software - data pipelines, APIs, backends, interfaces, databases, validation, deployment, and automation. Current work centers on AI engineering, machine learning, generative AI, full-stack engineering, and data engineering.</p>
+    <p class="hero-eyebrow">Software engineering / Applied AI</p>
+    <h1 class="hero-headline">Computer Science engineering student building <span class="hero-keyword">AI, machine learning</span>, data, and full-stack systems.</h1>
+    <p class="hero-sub">I turn model experiments into <strong class="text-focus">end-to-end software</strong> - data pipelines, APIs, backends, interfaces, databases, validation, deployment, and automation. Current work centers on AI engineering, machine learning, generative AI, full-stack engineering, and data engineering.</p>
     <p class="hero-sub">Pursuing a Bachelor of Engineering in Computer Science Engineering at KMTES, with a focus on applied AI and software engineering.</p>
     <div class="hero-links">
       <a href="https://github.com/samxkevin" target="_blank" rel="noopener">GitHub</a>
@@ -645,13 +788,23 @@
 
   <section class="wrap-wide" id="certifications">
     <h2 class="section-title">Certifications</h2>
-    <p class="section-lede">Course credentials and supporting certificate records.</p>
-    <ul class="plain-list">
-      <li>
-        <div class="list-main"><span class="list-title">Hugging Face Agents Course</span><span class="list-desc"> - Excellence Certificate</span></div>
-        <a class="list-link" href="https://drive.google.com/drive/folders/141U79PkVVvfm860OrN-IpA48xProeHat?usp=drive_link" target="_blank" rel="noopener noreferrer">View certificates</a>
-      </li>
-    </ul>
+    <p class="section-lede">Credentials and course records, with the certificate gallery available to browse directly on this page.</p>
+    <div class="cert-display">
+      <div class="cert-feature">
+        <span class="cert-kicker">Course credential</span>
+        <h3>Hugging Face Agents Course</h3>
+        <p>Excellence Certificate</p>
+        <a href="https://drive.google.com/drive/folders/141U79PkVVvfm860OrN-IpA48xProeHat?usp=drive_link" target="_blank" rel="noopener noreferrer">Open certificate collection &#8599;</a>
+      </div>
+      <div class="cert-viewer">
+        <div class="cert-viewer-bar">
+          <span>Certificate gallery</span>
+          <a href="https://drive.google.com/drive/folders/141U79PkVVvfm860OrN-IpA48xProeHat?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Google Drive &#8599;</a>
+        </div>
+        <iframe title="Certificates from Google Drive" src="https://drive.google.com/embeddedfolderview?id=141U79PkVVvfm860OrN-IpA48xProeHat#grid" loading="lazy" referrerpolicy="no-referrer" allowfullscreen></iframe>
+      </div>
+    </div>
+    <p class="cert-help">Certificates are displayed from the linked Google Drive folder. If the gallery does not load, open the collection directly. The folder must allow access to anyone with the link.</p>
   </section>
 
   <section class="wrap-wide" id="additional">
@@ -712,8 +865,87 @@
       </div>
       <span class="footer-loc">Hyderabad, India</span>
     </div>
-    <p class="footer-note">Every project description, statistic, and link on this page is drawn directly from documentation published at <a href="https://github.com/samxkevin" target="_blank" rel="noopener">github.com/samxkevin</a>. Nothing here is inferred or invented.</p>
+    <p class="footer-note">Project descriptions and statistics are based on repository documentation. Course credential information is listed in my resume, and the certificate gallery is hosted on Google Drive.</p>
+    <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Pause background animation</button>
   </div>
+    <script>
+  (function () {
+    const canvas = document.getElementById('ambient-canvas');
+    const toggle = document.getElementById('motion-toggle');
+    if (!canvas || !toggle) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) { toggle.hidden = true; return; }
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let w = 0, h = 0, dpr = 1, dots = [], frame = 0, running = false, last = 0;
+    const css = getComputedStyle(document.documentElement);
+    const hexRgb = function (v) {
+      const m = v.trim().match(/^#([0-9a-f]{6})$/i);
+      if (!m) return [78, 101, 145];
+      return [parseInt(m[1].slice(0,2),16), parseInt(m[1].slice(2,4),16), parseInt(m[1].slice(4,6),16)];
+    };
+    const blue = hexRgb(css.getPropertyValue('--blue-dim'));
+    const green = hexRgb(css.getPropertyValue('--green-dim'));
+    const rgba = (a, opacity) => 'rgba(' + a.join(',') + ',' + opacity + ')';
+    function resize() {
+      w = window.innerWidth; h = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const count = Math.max(16, Math.min(42, Math.round(w * h / 32000)));
+      dots = Array.from({ length: count }, (_, i) => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - .5) * .24, vy: (Math.random() - .5) * .22,
+        r: 0.7 + Math.random() * 1.1,
+        color: i % 5 === 0 ? green : blue
+      }));
+      draw();
+    }
+    function draw() {
+      ctx.clearRect(0,0,w,h);
+      for (let i=0;i<dots.length;i++) {
+        const a=dots[i];
+        for (let j=i+1;j<dots.length;j++) {
+          const b=dots[j], dx=a.x-b.x, dy=a.y-b.y, dist2=dx*dx+dy*dy;
+          if (dist2<26000) {
+            const alpha = 0.13*(1-dist2/26000);
+            ctx.strokeStyle=rgba(blue,alpha);
+            ctx.lineWidth=.8;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+        ctx.fillStyle=rgba(a.color, .48);
+        ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,Math.PI*2); ctx.fill();
+      }
+    }
+    function animate(time) {
+      if (!running || document.hidden) return;
+      if (time-last>=32) {
+        const step=Math.min((time-last)/32,2);
+        for (const p of dots) {
+          p.x+=p.vx*step; p.y+=p.vy*step;
+          if(p.x<0||p.x>w) p.vx*=-1;
+          if(p.y<0||p.y>h) p.vy*=-1;
+        }
+        draw(); last=time;
+      }
+      frame=requestAnimationFrame(animate);
+    }
+    function setMotion(on) {
+      running=on&&!reduce.matches;
+      cancelAnimationFrame(frame);
+      toggle.textContent=reduce.matches ? 'Reduced motion enabled' : running ? 'Pause background animation' : 'Resume background animation';
+      toggle.setAttribute('aria-pressed',String(!running));
+      toggle.disabled=reduce.matches;
+      if(running&&!document.hidden){last=performance.now();frame=requestAnimationFrame(animate);}
+      else draw();
+    }
+    toggle.addEventListener('click',()=>setMotion(!running));
+    window.addEventListener('resize',()=>{resize();if(running)last=performance.now();},{passive:true});
+    document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(frame);if(!document.hidden && running){last=performance.now();frame=requestAnimationFrame(animate);}});
+    if(reduce.addEventListener) reduce.addEventListener('change',()=>setMotion(!reduce.matches));
+    resize(); setMotion(!reduce.matches);
+  })();
+    </script>
 </footer>
 
 </body>
